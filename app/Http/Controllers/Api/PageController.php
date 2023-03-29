@@ -33,7 +33,13 @@ class PageController extends Controller
         $itemsPerPage = request()->input('items_per_page');
 
         $projects = Project::with(['type','technologies'])->paginate( $itemsPerPage);
-
+        
+        // 1 metodo per inserire url base (localhost... + storage/+img)
+        //foreach ($projects as  $project)
+                        //dd($project->getFullPathFeaturedImageAttribute()); //questo è il secondo metodo creato dentro il model, e non ha bisogno di essere richiamato perchè viene appeso nel model, dd esempio stampa
+            // if($project->featured_image)
+            // $project->featured_image = asset('storage/'.$project->featured_image);
+       
         $response = [
             'success' => true,
             'code' => 200,
