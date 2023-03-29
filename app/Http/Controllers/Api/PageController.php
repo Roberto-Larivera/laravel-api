@@ -17,7 +17,10 @@ class PageController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        // questo prende tutti i progetti senza i dati di ogni tabella collegata
+        // $projects = Project::all();
+        $projects = Project::with(['type','technologies'])->get();
+
         $response = [
             'success' => true,
             'code' => 200,
