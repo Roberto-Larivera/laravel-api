@@ -19,7 +19,20 @@ class PageController extends Controller
     {
         // questo prende tutti i progetti senza i dati di ogni tabella collegata
         // $projects = Project::all();
-        $projects = Project::with(['type','technologies'])->get();
+        $itemsPerPage = 10;
+        if(request()->input('items_per_page')
+            &&
+            (
+                request()->input('items_per_page') == 10 ||
+                request()->input('items_per_page') == 20 ||
+                request()->input('items_per_page') == 30 ||
+                request()->input('items_per_page') == 40 ||
+                request()->input('items_per_page') == 50 
+            )
+        )
+        $itemsPerPage = request()->input('items_per_page');
+
+        $projects = Project::with(['type','technologies'])->paginate( $itemsPerPage);
 
         $response = [
             'success' => true,
