@@ -38,7 +38,7 @@ class Project extends Model
      */
     protected $appends = [
         'full_path_featured_image',
-        'formatted_created-at',
+        'formatted_created_at',
     ];
 
     public function getFullPathFeaturedImageAttribute(){
