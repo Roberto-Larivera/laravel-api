@@ -26,8 +26,7 @@ class PageController extends Controller
                 request()->input('items_per_page') == 12 ||
                 request()->input('items_per_page') == 24 ||
                 request()->input('items_per_page') == 36 ||
-                request()->input('items_per_page') == 48 ||
-                request()->input('items_per_page') == 60 
+                request()->input('items_per_page') == 48
             )
         )
         $itemsPerPage = request()->input('items_per_page');
