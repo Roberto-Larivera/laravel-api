@@ -48,6 +48,26 @@ class PageController extends Controller
         return response()->json($response);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function show($slug)
+    {
+        $project= Project::where('slug', $slug)->with(['type','technologies'])->first();
+        
+        
+        $response = [
+            'success' => true,
+            'code' => 200,
+            'message' => 'OK',
+            'project' => $project
+        ];
+
+        return response()->json($response);
+    }
 
         /**
      * Store a newly created resource in storage.
@@ -66,17 +86,6 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
