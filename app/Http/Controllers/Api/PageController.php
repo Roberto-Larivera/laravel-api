@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Project;
 
+// Helpers
+// o si impora cosi o direttamente /Exception quando si usa
+use Exception;
+
 class PageController extends Controller
 {
     /**
@@ -56,15 +60,43 @@ class PageController extends Controller
      */
     public function show($slug)
     {
+        
+        // 1 metodo per verificare se la query ha dato una risposta corretta o a datto errore
+        /*
         $project= Project::where('slug', $slug)->with(['type','technologies'])->first();
         
-        
-        $response = [
-            'success' => true,
-            'code' => 200,
-            'message' => 'OK',
-            'project' => $project
-        ];
+        if($project)
+            $response = [
+                'success' => true,
+                'code' => 200,
+                'message' => 'OK',
+                'project' => $project
+            ];
+        else
+            $response = [
+                'success' => false,
+                'code' => 404,
+                'message' => 'NOT FOUND'
+            ];
+        */
+
+        // 2 metodo, grazie a firstOrFail() facciamo uscire un errore (exception) e con try se mentre segue il codice va in errore si ferma e fa partire il catch
+        try{
+            $project= Project::where('slug', $slug)->with(['type','technologies'])->firstOrFail();
+            $response = [
+                'success' => true,
+                'code' => 200,
+                'message' => 'OK',
+                'project' => $project
+            ];
+        }catch (Exception $e){
+            $response = [
+                'success' => false,
+                'code' => $e->getCode(),
+                'message' =>  $e->getMessage()
+            ];
+        }
+
 
         return response()->json($response);
     }
