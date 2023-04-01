@@ -1,5 +1,7 @@
 # Laravel Boolfolio - API
 
+## BACKEND
+
 ## Giorno 1
 
 ## Descrizione
@@ -24,5 +26,27 @@ Stampiamo in console i risultati e verifichiamo di ricevere i dati correttamente
 ## Milestone 5
 Creiamo un nuovo componente ProjectCard, che corrisponde ad una card per visualizzare un progetto. Utilizziamo questo componente per visualizzare tutti i progetti ricevuti tramite API.
 
-## Bonus:
+## Bonus:/6
 Gestire la paginazione dei risultati
+
+## Giorno 2
+
+## Descrizione
+continuiamo a lavorare sul codice di ieri (stesse repo).
+Aggiungiamo l'endpoint API projects/slug (corrispondente alla funzione show nel controller) per recuperare le informazioni del singolo Progetto tramite axios
+
+## Milestone 1/7
+`nome repo 1: laravel-api`
+Creiamo la funzionalità show in Api\ProjectController
+
+## Milestone 2/8
+Testiamo la chiamata API tramite Postman e assicuriamoci di ricevere i dati correttamente
+
+## Milestone 3/9
+`nome repo 2: vite-boolfolio`
+Aggiungiamo Vue Router sul front office e creiamo almeno 2 rotte:
+- Rotta per l'index dei progetti
+- Rotta per lo show del singolo progetto
+
+## Milestone 4/10
+Nella pagina del singolo progetto, recuperare le informazioni tramite API e mostrarle in pagina
